@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.toni.vlifttest.R;
+import com.example.toni.vlifttest.activity.MainActivity;
 import com.example.toni.vlifttest.model.NewLead;
 
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ public class NewLeadsFragment extends Fragment {
     RecyclerView recyclerView;
     RecyclerViewAdapter recyclerViewAdapter;
     List<NewLead> newLeads = new ArrayList<>();
+    Toolbar toolbar;
     public NewLeadsFragment() {
         // Required empty public constructor
     }
@@ -38,6 +41,10 @@ public class NewLeadsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_new_leads, container, false);
         recyclerView = view.findViewById(R.id.recycler_view_new_leads);
+        toolbar = view.findViewById(R.id.toolbar_new_leads);
+        ((MainActivity)getActivity()).setSupportActionBar(toolbar);
+        setHasOptionsMenu(true);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerViewAdapter = new RecyclerViewAdapter();
         recyclerView.setAdapter(recyclerViewAdapter);
@@ -69,6 +76,7 @@ public class NewLeadsFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.toolbar_menu_new_leads,menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 

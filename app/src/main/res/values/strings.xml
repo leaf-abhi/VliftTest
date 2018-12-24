@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Vlift Test</string>
+    <string name="button_text_login_promo">Sign Up/Login</string>
+    <string name="id_verification">Identity Verification</string>
+    <string name="about_me">About Me</string>
+    <string name="service_location">Add your service location</string>
+    <string name="submit_reference">Submit References</string>
+    <string name="work_photos">Upload photos of your work</string>
+    <string name="award_and_certificate">Award and Certificate photos</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

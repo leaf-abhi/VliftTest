@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_item_new"
+        android:icon="@android:drawable/sym_action_email"
+        android:title="New" />
+    <item
+        android:id="@+id/menu_item_ongoing"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="Ongoing" />
+    <item
+        android:id="@+id/menu_item_profile"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="Profile" />
+    <item
+        android:id="@+id/menu_item_menu"
+        android:icon="@drawable/ic_action_overflow"
+        android:title="Menu" />
+</menu>

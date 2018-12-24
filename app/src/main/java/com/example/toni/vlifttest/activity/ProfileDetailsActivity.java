@@ -13,8 +13,9 @@ import com.example.toni.vlifttest.R;
 import com.example.toni.vlifttest.fragment.login.LoginFragment;
 import com.example.toni.vlifttest.fragment.main.ProfileFragment;
 import com.example.toni.vlifttest.fragment.profile.EditProfilePicFragment;
+import com.example.toni.vlifttest.fragment.profile.UserDetailsFragment;
 
-public class ProfileActivity extends AppCompatActivity implements
+public class ProfileDetailsActivity extends AppCompatActivity implements
         EditProfilePicFragment.FragmentInteractionListener {
     FrameLayout frameLayout;
     private int selectedViewId;
@@ -39,37 +40,44 @@ public class ProfileActivity extends AppCompatActivity implements
             }
 
             case R.id.button_about_me : {
+                getSupportActionBar().setTitle("About Me");
+                fragment = UserDetailsFragment.newInstance();
                 break;
             }
 
             case R.id.button_location : {
+                getSupportActionBar().setTitle("Service Area");
                 break;
             }
 
             case R.id.button_references: {
+                getSupportActionBar().setTitle("References");
                 break;
             }
 
             case R.id.button_work_photos : {
+                getSupportActionBar().setTitle("Photos of Work");
                 break;
             }
 
             case R.id.button_certificate_photos : {
+                getSupportActionBar().setTitle("Award and Certificates");
                 break;
             }
 
             case R.id.image_view_profile : {
                 getSupportActionBar().setTitle("Choose your Profile Picture");
                 fragment = EditProfilePicFragment.newInstance();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(frameLayout.getId(),fragment)
-                        .commit();
                 break;
             }
             default: {
                 break;
             }
         }
+        if(fragment!=null)
+            getSupportFragmentManager().beginTransaction()
+                    .replace(frameLayout.getId(),fragment)
+                    .commit();
     }
 
     @Override

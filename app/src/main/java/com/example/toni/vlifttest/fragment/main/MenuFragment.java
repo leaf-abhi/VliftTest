@@ -15,7 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.toni.vlifttest.R;
-import com.example.toni.vlifttest.activity.MenuActivity;
+import com.example.toni.vlifttest.activity.MenuDetailsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +66,7 @@ public class MenuFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 System.out.println(id);
                 if(id!=11) { //id = 11 is for app version number
-                    Intent intent = new Intent(MenuFragment.this.getContext(), MenuActivity.class);
+                    Intent intent = new Intent(MenuFragment.this.getContext(), MenuDetailsActivity.class);
                     intent.putExtra(MENU_ITEM_ID_KEY, id);
                     startActivity(intent);
                 }

@@ -6,20 +6,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.toni.vlifttest.R;
 import com.example.toni.vlifttest.SessionManager;
-import com.example.toni.vlifttest.activity.ProfileActivity;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.toni.vlifttest.activity.ProfileDetailsActivity;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener{
     public static final String SELECTED_VIEW_ID_KEY = "selected view id key";
@@ -59,6 +53,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
 
         textViewName.setText("Hello, "+SessionManager.getInstance().getLoggedInUser().getName());
         textViewExtra.setText("");
+        buttonIdVerification.setOnClickListener(this);
         buttonAwardAndCertificates.setOnClickListener(this);
         buttonAboutMe.setOnClickListener(this);
         buttonaddLocation.setOnClickListener(this);
@@ -73,7 +68,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         Toast.makeText(this.getContext(),""+v.getId(),Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this.getContext(),ProfileActivity.class);
+        Intent intent = new Intent(this.getContext(),ProfileDetailsActivity.class);
         intent.putExtra(SELECTED_VIEW_ID_KEY,v.getId());
         startActivity(intent);
     }

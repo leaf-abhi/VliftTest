@@ -13,7 +13,7 @@ import com.example.toni.vlifttest.fragment.menu.AccountSettingFragment;
 import com.example.toni.vlifttest.fragment.menu.ContactUs;
 import com.example.toni.vlifttest.fragment.menu.WebViewFragment;
 
-public class MenuActivity extends AppCompatActivity implements
+public class MenuDetailsActivity extends AppCompatActivity implements
         AccountSettingFragment.FragmentInteractionListener {
     FrameLayout frameLayout;
     int selectedOptionId;

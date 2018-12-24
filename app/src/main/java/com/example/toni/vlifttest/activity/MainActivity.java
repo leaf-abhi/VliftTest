@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        System.out.println("onCreate mainactivity called"+savedInstanceState);
         bottomNavigationView = findViewById(R.id.bottom_navigation_view_main);
         frameLayout = findViewById(R.id.frame_layout_main);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 Fragment fragment;
                 selectedMenuItemId = menuItem.getItemId();
+                System.out.println("selectedMenuItem : "+selectedMenuItemId);
                 switch (selectedMenuItemId) {
                     case R.id.menu_item_new : {
                         fragment = NewLeadsFragment.newInstance();
@@ -74,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         if(savedInstanceState!=null) {
+            System.out.println("saved instance state is not null");
             selectedMenuItemId = savedInstanceState.getInt(SELECTED_MENU_ITEM_ID_KEY);
         }
         else if(selectedMenuItemId == 0)
@@ -93,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onSaveInstanceState(Bundle state) {
+        System.out.println("onSaveInstanceState main activity called");
         state.putInt(SELECTED_MENU_ITEM_ID_KEY,selectedMenuItemId);
         super.onSaveInstanceState(state);
     }

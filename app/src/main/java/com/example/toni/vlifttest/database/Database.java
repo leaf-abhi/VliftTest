@@ -12,9 +12,9 @@ public class Database {
     static {
         users.add(new User.Builder()
                     .setName("Abhishek")
-                    .setEmail("xyz")
-                    .setPassword("1234")
-                    .setPhoneNo("12345")
+                    .setEmail("somemail@domain.com")
+                    .setPassword("12345678")
+                    .setPhoneNo("1234567890")
                     .build());
     }
 

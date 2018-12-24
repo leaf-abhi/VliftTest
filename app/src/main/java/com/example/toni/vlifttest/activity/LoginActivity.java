@@ -38,13 +38,17 @@ public class LoginActivity extends AppCompatActivity implements
     @Override
     public void onClickLogin(String email, String password) {
         User user = Database.getInstance().getUser(email);
-        if(password.equals(user.getPassword())) {
-            SessionManager.getInstance().createSession(user);
-            Toast.makeText(this,"Login Successful",Toast.LENGTH_LONG).show();
-            startActivity(new Intent(this,MainActivity.class));
-            this.finish();
+        if(user!=null) {
+            if (password.equals(user.getPassword())) {
+                SessionManager.getInstance().createSession(user);
+                Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(this, MainActivity.class));
+                this.finish();
+            } else {
+                Toast.makeText(this, "Incorrect Login Details", Toast.LENGTH_LONG).show();
+            }
         } else {
-            Toast.makeText(this,"Incorrect Login Details",Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Incorrect Login Details", Toast.LENGTH_LONG).show();
         }
     }
 }

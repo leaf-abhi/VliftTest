@@ -24,7 +24,7 @@ public class ContactUs extends Fragment {
         // Required empty public constructor
     }
     
-    public static ContactUs newInstance(String param1, String param2) {
+    public static ContactUs newInstance() {
         ContactUs fragment = new ContactUs();
         return fragment;
     }
@@ -65,7 +65,7 @@ public class ContactUs extends Fragment {
         @NonNull
         @Override
         public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-            View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_layout_account_settings,viewGroup,false);
+            View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_layout_contact_us,viewGroup,false);
             return new ItemViewHolder(view);
         }
 
@@ -85,7 +85,7 @@ public class ContactUs extends Fragment {
         int position;
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.text_view_item_account_setting);
+            textView = itemView.findViewById(R.id.text_view_item_contact_us);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

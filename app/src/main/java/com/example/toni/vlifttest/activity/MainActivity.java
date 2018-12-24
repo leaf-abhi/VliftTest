@@ -27,8 +27,10 @@ import com.example.toni.vlifttest.fragment.main.ProfileFragment;
 import java.lang.reflect.Field;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String SELECTED_MENU_ITEM_ID_KEY = "selected menu item id key";
     private BottomNavigationView bottomNavigationView;
     private FrameLayout frameLayout;
+    private int selectedMenuItemId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 Fragment fragment;
-                switch (menuItem.getItemId()) {
+                selectedMenuItemId = menuItem.getItemId();
+                switch (selectedMenuItemId) {
                     case R.id.menu_item_new : {
                         fragment = NewLeadsFragment.newInstance();
                         break;
@@ -70,8 +73,12 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-        bottomNavigationView.setSelectedItemId(R.id.menu_item_profile);
+        if(savedInstanceState!=null) {
+            selectedMenuItemId = savedInstanceState.getInt(SELECTED_MENU_ITEM_ID_KEY);
+        }
+        else if(selectedMenuItemId == 0)
+            selectedMenuItemId = R.id.menu_item_profile;
+        bottomNavigationView.setSelectedItemId(selectedMenuItemId);
         getSupportFragmentManager().beginTransaction()
                 .replace(frameLayout.getId(),ProfileFragment.newInstance())
                 .commit();
@@ -82,6 +89,12 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         if(!SessionManager.getInstance().isSessionAlive())
             this.finish();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle state) {
+        state.putInt(SELECTED_MENU_ITEM_ID_KEY,selectedMenuItemId);
+        super.onSaveInstanceState(state);
     }
 
     @Override

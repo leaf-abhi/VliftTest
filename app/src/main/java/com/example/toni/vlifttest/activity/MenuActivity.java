@@ -10,6 +10,7 @@ import com.example.toni.vlifttest.R;
 import com.example.toni.vlifttest.fragment.main.MenuFragment;
 import com.example.toni.vlifttest.fragment.main.ProfileFragment;
 import com.example.toni.vlifttest.fragment.menu.AccountSettingFragment;
+import com.example.toni.vlifttest.fragment.menu.ContactUs;
 import com.example.toni.vlifttest.fragment.menu.WebViewFragment;
 
 public class MenuActivity extends AppCompatActivity implements
@@ -47,21 +48,27 @@ public class MenuActivity extends AppCompatActivity implements
             }
             case 4: {
                 fragment = AccountSettingFragment.newInstance();
+                getSupportActionBar().setTitle("Account Settings");
                 break;
             }
             case 5: {
                 fragment = WebViewFragment.newInstance("https://partner.urbanclap.com/help-center");
+                getSupportActionBar().setTitle("How It Works");
                 break;
             }
             case 6: {
                 fragment = WebViewFragment.newInstance("https://www.urbanclap.com/terms");
+                getSupportActionBar().setTitle("Terms of Use");
                 break;
             }
             case 7: {
                 fragment = WebViewFragment.newInstance("https://www.urbanclap.com/privacy-policy");
+                getSupportActionBar().setTitle("Privacy Policy");
                 break;
             }
             case 8: {
+                fragment = ContactUs.newInstance();
+                getSupportActionBar().setTitle("Contact Us");
                 break;
             }
             case 9: {

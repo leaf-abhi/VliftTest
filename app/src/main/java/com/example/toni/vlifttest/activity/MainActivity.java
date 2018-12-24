@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.example.toni.vlifttest.R;
+import com.example.toni.vlifttest.SessionManager;
 import com.example.toni.vlifttest.fragment.main.MenuFragment;
 import com.example.toni.vlifttest.fragment.main.NewLeadsFragment;
 import com.example.toni.vlifttest.fragment.main.OngoingFragment;
@@ -74,6 +75,13 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(frameLayout.getId(),ProfileFragment.newInstance())
                 .commit();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(!SessionManager.getInstance().isSessionAlive())
+            this.finish();
     }
 
     @Override

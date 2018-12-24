@@ -8,10 +8,8 @@ import com.example.toni.vlifttest.model.User;
 
 public class SessionManager {
     private static final String SESSION_DATA_PREFERENCE_FILE_KEY = "com.example.toni.session_preference_file_key" ;
-    private static final String SESSION_ALIVE_KEY = "session alive key";
     private static final String LOGGED_IN_USER_KEY = "logged in user key";
     private static SessionManager sessionManager;
-    private boolean sessionAlive;
     private String loggedInUserId;
     private User loggedInUser;
     private SharedPreferences preferences;
@@ -34,12 +32,10 @@ public class SessionManager {
 
         sessionManager.preferences = context.getSharedPreferences(SESSION_DATA_PREFERENCE_FILE_KEY,
                 Context.MODE_PRIVATE);
-        sessionManager.sessionAlive = sessionManager.preferences.getBoolean(SESSION_ALIVE_KEY,false);
-        if(sessionManager.isSessionAlive()) { // if session was previously alive
-            sessionManager.loggedInUserId = sessionManager.preferences.getString(LOGGED_IN_USER_KEY,null);
-        }
+        //check if the user was previously logged in
+        sessionManager.loggedInUserId = sessionManager.preferences.getString(LOGGED_IN_USER_KEY,null);
 
-        if(sessionManager.loggedInUserId!=null) { //fetch details from the database
+        if(sessionManager.loggedInUserId!=null) { //fetch details from the database if user was logged in
             //TODO: Add actual code to access database here
             sessionManager.loggedInUser = Database.getInstance().getUser(sessionManager.loggedInUserId);
         }
@@ -47,7 +43,7 @@ public class SessionManager {
     }
 
     public boolean isSessionAlive() {
-        return sessionAlive;
+        return loggedInUser!=null;
     }
 
     public boolean isSharedPreferencesSet() {
@@ -64,12 +60,10 @@ public class SessionManager {
         //create the memeber session
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(LOGGED_IN_USER_KEY,user.getEmail());
-        editor.putBoolean(SESSION_ALIVE_KEY,true);
         editor.commit();
 
         loggedInUser = user;
         this.loggedInUserId = user.getEmail();
-        sessionAlive = true;
         return true;
     }
 

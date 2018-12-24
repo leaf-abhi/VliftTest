@@ -22,7 +22,6 @@ public class LoginActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        SessionManager.init(this);
         frameLayout = findViewById(R.id.frame_layout_login_activity);
         getSupportFragmentManager().beginTransaction()
                 .replace(frameLayout.getId(),LoginPromoFragment.newInstance())

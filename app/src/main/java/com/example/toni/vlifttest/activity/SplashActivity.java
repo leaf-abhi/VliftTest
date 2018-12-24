@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.toni.vlifttest.R;
+import com.example.toni.vlifttest.SessionManager;
 
 public class SplashActivity extends AppCompatActivity {
     public static final long SPLASH_TIME = 2000;
@@ -13,11 +14,14 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
+        SessionManager.init(this);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashActivity.this,LoginActivity.class));
+                if(SessionManager.getInstance().getLoggedInUser()==null)
+                    startActivity(new Intent(SplashActivity.this,LoginActivity.class));
+                else
+                    startActivity(new Intent(SplashActivity.this,MainActivity.class));
                 SplashActivity.this.finish();
             }
         },SPLASH_TIME);

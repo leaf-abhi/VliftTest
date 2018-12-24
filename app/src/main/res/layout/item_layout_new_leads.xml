@@ -26,7 +26,7 @@
             android:id="@+id/view_vertical_line"
             android:layout_width="5dp"
             android:layout_height="0dp"
-            android:background="@color/bottomNavItemTint"
+            android:background="@android:color/holo_orange_dark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
